@@ -1,0 +1,67 @@
+//============================================================================
+// Name        : settingsdialog.cpp
+// Author      : LiSY
+// Version     : V1.0
+// Copyright   : Your copyright notice
+// Description : SerialPort
+//============================================================================
+
+#ifndef SETTINGSDIALOG_H
+#define SETTINGSDIALOG_H
+#include <QDialog>
+#include <QtSerialPort/QSerialPort>
+#include <QtSerialPort/QSerialPortInfo>
+#include <QSettings>
+#include <QIntValidator>
+#include <QLineEdit>
+
+namespace Ui {
+class SettingsDialog;
+}
+
+class SettingsDialog : public QDialog
+{
+    Q_OBJECT
+
+public:
+    struct Settings {
+        QString name;
+        qint32 baudRate;
+        QString stringBaudRate;
+        QSerialPort::DataBits dataBits;
+        QString stringDataBits;
+        QSerialPort::Parity parity;
+        QString stringParity;
+        QSerialPort::StopBits stopBits;
+        QString stringStopBits;
+        QSerialPort::FlowControl flowControl;
+        QString stringFlowControl;
+    };
+    explicit SettingsDialog(QWidget *parent = 0);
+    ~SettingsDialog();
+
+    Settings settings() const;
+private:
+    bool setSeriadParamFinish;
+signals:
+    void serialPortParamSetFinish();
+private slots:
+    void apply();
+    void checkCustomBaudRatePolicy(int idx);
+
+
+private:
+    void fillPortsParameters();
+    void fillPortsInfo();
+    void updateSettings();
+
+private:
+    Ui::SettingsDialog *ui;
+    Settings currentSettings;
+    QIntValidator *intValidator;
+public:
+    void readSettings();
+    void saveSettings();
+};
+
+#endif // SETTINGSDIALOG_H

@@ -1,0 +1,18 @@
+<RCC>
+    <qresource prefix="/">
+        <file>images/disconnect.png</file>
+        <file>images/settings.png</file>
+        <file>images/connect.png</file>
+        <file>images/about.png</file>
+        <file>images/application-exit.png</file>
+        <file>images/clear.png</file>
+        <file>images/FastCmd.png</file>
+        <file>images/MaxScreen.png</file>
+        <file>images/MinScreen.png</file>
+        <file>images/PosWidget.png</file>
+        <file>images/SaveFile.png</file>
+        <file>images/SaveFile_Close.png</file>
+        <file>images/Thumbs.db</file>
+        <file>appIcon.ico</file>
+    </qresource>
+</RCC>
